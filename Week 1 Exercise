@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Baggage Weight Checker</title>
+</head>
+<body>
+
+  <h2>Baggage Weight Checker</h2>
+  <p>Enter baggage weight (kg):</p>
+
+  <input type="number" id="weight" />
+  <button onclick="checkWeight()">Check</button>
+
+  <p id="message"></p>
+
+  <script>
+    function checkWeight() {
+      var weight = parseFloat(document.getElementById("weight").value);
+      var limit = 23;
+      var message = "";
+
+      if (isNaN(weight)) {
+        message = "Please enter a number.";
+      } else if (weight <= limit) {
+        message = "Baggage is within the limit.";
+      } else {
+        message = "Baggage is overweight by " + (weight - limit).toFixed(1) + " kg.";
+      }
+
+      document.getElementById("message").textContent = message;
+    }
+  </script>
+
+</body>
+</html>
