@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercise 5: Arrays</title>
+</head>
+<body>
+
+  <p>Enter two arrays:</p>
+
+  <p>a (two numbers, comma-separated):</p>
+  <textarea id="a" rows="2" cols="50"></textarea><br><br>
+
+  <p>l (list of numbers, comma-separated):</p>
+  <textarea id="l" rows="4" cols="50"></textarea><br><br>
+
+  <button onclick="handleClick()">Press me!</button>
+
+  <script>
+    // f5: returns the sum of all values in l that are multiples of a[0] or a[1]
+    function f5(a, l) {
+      let sum = 0;
+      for (let i = 0; i < l.length; i++) {
+        if (l[i] % a[0] === 0 || l[i] % a[1] === 0) {
+          sum += l[i];
+        }
+      }
+      return sum;
+    }
+
+    function handleClick() {
+      const aInput = document.getElementById("a").value;
+      const lInput = document.getElementById("l").value;
+
+      const a = aInput.split(",").map(Number);
+      const l = lInput.split(",").map(Number);
+
+      // Check that a has exactly 2 numbers and all values are valid
+      if (a.length !== 2 || a.some(isNaN) || l.some(isNaN)) {
+        alert("Please enter 2 valid numbers in 'a' and valid numbers in 'l'.");
+        return;
+      }
+
+      const result = f5(a, l);
+      alert("The sum is: " + result);
+    }
+  </script>
+
+</body>
+</html>
