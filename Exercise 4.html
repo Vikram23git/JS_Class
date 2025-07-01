@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercise 4: Arrays</title>
+</head>
+<body>
+
+  <p>Enter values:</p>
+
+  a: <input id="a" type="number"><br><br>
+  b: <input id="b" type="number"><br><br>
+  l (Enter the range of numbers):<br>
+  <textarea id="l" rows="4" cols="40"></textarea><br><br>
+
+  <button onclick="handleClick()">Press me!</button>
+
+  <script>
+    // Function to return sum of multiples of a or b in array l
+    function f4(a, b, l) {
+      let sum = 0;
+      for (let i = 0; i < l.length; i++) {
+        if (l[i] % a === 0 || l[i] % b === 0) {
+          sum += l[i];
+        }
+      }
+      return sum;
+    }
+
+    function handleClick() {
+      const a = parseInt(document.getElementById("a").value);
+      const b = parseInt(document.getElementById("b").value);
+      const lInput = document.getElementById("l").value;
+
+      // Convert comma-separated values to array of numbers
+      const l = lInput.split(",").map(Number);
+
+      if (isNaN(a) || isNaN(b) || l.some(isNaN)) {
+        alert("Please enter valid numbers for a, b, and l.");
+        return;
+      }
+
+      const result = f4(a, b, l);
+      alert("The sum is: " + result);
+    }
+  </script>
+
+</body>
+</html>
